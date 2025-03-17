@@ -1,0 +1,19 @@
+class Solution {
+  public:
+  //using recursive approach
+  
+  int sum(vector<int>&arra, int N)
+  {
+      if(N==0)
+      {
+          return 0;
+      }
+      return arra[N-1] + sum(arra, N-1);
+  }
+  
+    // Function to return sum of elements
+    int arraySum(vector<int>& arr) {
+        return sum(arr,arr.size());
+        // code here
+    }
+};
