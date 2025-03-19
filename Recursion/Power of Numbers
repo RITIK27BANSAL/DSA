@@ -1,0 +1,45 @@
+class Solution {
+  public:
+     
+    int mod = 1e9+7;
+    int power(int n,int r){
+        if(n==0){return 0;}
+        if(r==0){return 1;}
+        if(r%2==0)
+        {
+            int ans = power(n,r/2);
+            return (ans%mod * ans%mod)%mod;
+        }
+        else
+        {
+            int ans = power(n,(r-1)/2);
+            return (ans%mod * ans%mod * n%mod) %mod;
+        }
+        
+    }     
+  
+    int rev(int n){
+        vector<int>v;
+        while(n!=0)
+        {
+            int a = n%10;
+            n /= 10;
+            v.push_back(a);
+        }
+        int r = v[0];
+        for(int i=1;i<v.size();i++)
+        {
+            r *=10;
+            r+=v[i];
+        }
+        return r;
+    }
+    int reverseExponentiation(int n) {
+        // code here
+        
+        int r =rev(n);
+        return power(n,r);
+        
+        
+    }
+};
